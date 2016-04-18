@@ -1,0 +1,9 @@
+.DS_Store
+/build
+/config/*.yml
+/coverage
+/dist
+/node_modules
+/reports
+/.tags
+/aglex-*.yml

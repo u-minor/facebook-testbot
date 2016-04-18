@@ -1,0 +1,3 @@
+facebook:
+  pageAccessToken: YOUR_PAGE_TOKEN
+  verifyToken: YOUR_VERIFY_TOKEN

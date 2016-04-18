@@ -1,0 +1,46 @@
+{
+  "name": "facebook-testbot",
+  "version": "0.1.0",
+  "description": "Test bot for facebook messenger",
+  "scripts": {
+    "test": "gulp test:ci"
+  },
+  "author": "Minoru Nakata <minoru@sprocket.bz> (http://www.sprocket.bz/)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "config": "^1.17.1",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "express": "^4.13.3",
+    "js-yaml": "^3.6.0",
+    "q": "^1.4.1",
+    "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "aglex": "^0.2.1",
+    "aws-sdk": "^2.2.18",
+    "chai": "^3.5.0",
+    "chai-as-promised": "^5.2.0",
+    "check-chai": "0.0.1",
+    "coffee-script": "^1.10.0",
+    "cors": "^2.7.1",
+    "del": "^2.1.0",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-coffee-istanbul": "^0.8.1",
+    "gulp-coffeelint": "^0.6.0",
+    "gulp-live-server": "0.0.29",
+    "gulp-mocha": "^2.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7",
+    "gulp-zip": "^3.0.2",
+    "proxyquire": "^1.7.4",
+    "run-sequence": "^1.1.4",
+    "sinon": "^1.17.3",
+    "sinon-as-promised": "^4.0.0",
+    "sinon-chai": "^2.8.0",
+    "traceur": "0.0.107",
+    "yargs": "^4.6.0"
+  }
+}

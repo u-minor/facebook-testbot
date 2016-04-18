@@ -1,0 +1,61 @@
+#### aglex config
+
+## AWS credential and region
+config:
+  ## Profile name for AWS CLI (see: AWS.SharedIniFileCredentials)
+  # profile: prod
+
+  ## You can also specify accessKeyId/secretAccessKey
+  # accessKeyId: YOUR_AWS_ACCESS_KEY
+  # secretAccessKey: YOUR_AWS_SECRET_KEY
+
+  # Region name for AWS (e.g. us-east-1)
+  region: ap-northeast-1
+
+## Lambda configuration
+lambda:
+  Handler: lambda.handler
+  Runtime: nodejs4.3
+  MemorySize: 128
+  Timeout: 60
+  FunctionName: facebook-testbot
+  Description: Test bot for facebook messenger
+  RoleName: lambda-facebook-testbot # Role ARN will generate from RoleName automatically
+
+## API Gateway configuration
+apiGateway:
+  name: facebook-testbot
+  description: Test bot for facebook messenger
+
+  ## Method template definitions for each httpMethod
+  methodDefinitions:
+    _DEFAULT_:
+      request:
+        type: Lambda
+      responses:
+        200:
+          responseModels:
+            text/html: Empty
+          responseTemplates:
+            application/json: $input.path('$.body')
+          responseHeaders: &defaultHeaders
+            Access-Control-Allow-Origin: "'*'"
+    OPTIONS:
+      request:
+        type: MOCK
+        requestTemplates:
+          application/json: '{"statusCode": 200}'
+      responses:
+        200:
+          responseHeaders:
+            <<: *defaultHeaders
+            Access-Control-Allow-Headers: "'Origin, Authorization, Accept, Content-Type'"
+            Access-Control-Allow-Methods: "'POST, GET, PUT, DELETE, OPTIONS'"
+            Access-Control-Max-Age: "'86400'"
+
+  ## API resources
+  resources:
+    /webhook:
+      - GET
+      - OPTIONS
+      - POST
