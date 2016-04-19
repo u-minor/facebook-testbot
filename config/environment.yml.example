@@ -1,3 +1,12 @@
+aws:
+  region: ap-northeast-1
+
 facebook:
   pageAccessToken: YOUR_PAGE_TOKEN
   verifyToken: YOUR_VERIFY_TOKEN
+
+simpleDb:
+  domain: facebook-testbot
+
+wit:
+  token: YOUR_WIT_CLIENT_TOKEN
