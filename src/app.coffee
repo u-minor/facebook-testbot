@@ -27,6 +27,9 @@ app.post '/webhook', (req, res) ->
   Q.all parr
   .then ->
     res.json message: 'OK'
+  .fail (err) ->
+    console.log err
+    res.json message: 'Error'
 
 app.use (req, res, next) ->
   res.status 404
@@ -36,8 +39,8 @@ sendTextMessage = (sender, text) ->
   messageData =
     text: text
 
-  Q.nfcall request
-    url: 'https://graph.facebook.com/v2.6/me/messages'
+  Q.nfcall request,
+    url: 'https://graph.facebook.com/me/messages'
     qs:
       access_token: config.facebook.pageAccessToken
     method: 'POST'
@@ -45,10 +48,5 @@ sendTextMessage = (sender, text) ->
       recipient:
         id: sender
       message: messageData
-  , (err, res) ->
-    if err
-      console.log 'Error sending message: ', err
-    else if res.body.error
-      console.log 'Error: ', res.body.error
 
 module.exports = app
